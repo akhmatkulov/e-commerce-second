@@ -5,7 +5,9 @@ import uz.pdp.entity.Product;
 import uz.pdp.entity.User;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public interface DB {
     List<User> USERS = new ArrayList<>(List.of(
@@ -34,5 +36,11 @@ public interface DB {
             new Product("T-shirt", 30, 3, "t-shirt.jpg"),
             new Product("Sneakers", 150, 3, "sneakers.jpg")
     ));
+
+    static Product getProductById(int id) {
+        return products.stream().filter(product -> product.getId() == id).findFirst().orElse(null);
+    }
+
+    Map<Product, Integer> map = new HashMap<>();
 
 }
